@@ -43,4 +43,19 @@ public class AddressBookServices
             }
         }
     }
+
+    void deleteContactByfName(AddressBook a , String a1){
+        boolean flag = false;
+        for (Person p : a.contactList){
+            if (p.getFname().equalsIgnoreCase(a1)) {
+                a.contactList.remove(p);
+                System.out.println("User deleted");
+                flag = true;
+                break;
+            }
+        }
+        if(!flag){
+            System.out.println("User not found so nothing is deleted");
+        }
+    }
 }

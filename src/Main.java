@@ -3,7 +3,7 @@ import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
-        String menu = "Press 1:Adding A contact\nPress 2: Display All Contacts\nPress 3: Edit Contact";
+        String menu = "Press 1: Adding A contact\nPress 2: Display All Contacts\nPress 3: Edit Contact\nPress 4: Delete Contact";
         Scanner sc = new Scanner(System.in);
         ArrayList<AddressBook> aList = new ArrayList<>();
         AddressBook a = new AddressBook("Book1");
@@ -31,6 +31,12 @@ public class Main {
                     String fname = sc.next();
                     for (AddressBook a1 : aList)
                         c1.updatePhoneNumberByName(a1, fname);
+                    break;
+                case 4:
+                    System.out.println("Enter the Name you want to delete");
+                    String s1 = sc.next();
+                    for (AddressBook a1 : aList)
+                        c1.deleteContactByfName(a1, s1);
                     break;
                 default:
                     System.out.println("Enter valid option");
