@@ -21,8 +21,7 @@ public class Main {
                     System.out.println("Enter the address book you want to search");
                     String searchAddressBook = sc.next();
                     for (AddressBook a1 : aList) {
-                        if (a1.Name.equalsIgnoreCase(searchAddressBook))
-                        {
+                        if (a1.Name.equalsIgnoreCase(searchAddressBook)) {
                             int choice;
                             do {
                                 System.out.println("Welcome to AddressBook");
@@ -36,7 +35,7 @@ public class Main {
                                         c1.addContact(a1);
                                         break;
                                     case 2:
-                                        System.out.println(a1.contactList);
+                                        c1.displayContacts(a1);
                                         break;
                                     case 3:
                                         System.out.println("Enter the Name you want to update Data");
@@ -61,7 +60,7 @@ public class Main {
                     break;
                 case 2 :
                     for (AddressBook x1 : aList) {
-                        System.out.println(x1.Name + "  : " + x1.contactList);
+                        System.out.println(x1.Name + "  : " + x1);
                     }
                     break;
             }

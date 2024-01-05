@@ -1,10 +1,11 @@
 import java.util.ArrayList;
+import java.util.HashMap;
 
 class AddressBook{
     String Name;
-    ArrayList<Person> contactList = new ArrayList<>();
+    HashMap<String, Person> contactMap = new HashMap<>();
 
-    AddressBook(String name){
-        this.Name =name;
+    AddressBook(String name) {
+        this.Name = name;
     }
 }
