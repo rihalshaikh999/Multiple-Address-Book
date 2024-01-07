@@ -1,25 +1,43 @@
 import java.util.ArrayList;
+import java.util.Map;
 import java.util.Scanner;
 
+/*
+ * This class contains the main method, logic, and switch cases for AddressBook functionality.
+ */
 public class Main {
+
+    /*
+     * The main method handles user input and invokes various methods based on the selected options.
+     */
     public static void main(String[] args) {
+        // Menu options for user selection
         String menu = "Press 1: Adding A contact\nPress 2: Display All Contacts\nPress 3: Edit Contact\nPress 4: Delete Contact";
+
+        // Scanner for user input
         Scanner sc = new Scanner(System.in);
+
+        // ArrayList to store multiple AddressBook instances
         ArrayList<AddressBook> aList = new ArrayList<>();
+
+        // Creating three AddressBook instances and adding them to the ArrayList
         AddressBook a = new AddressBook("Book1");
         AddressBook b = new AddressBook("Book2");
         AddressBook c = new AddressBook("Book3");
         aList.add(a);
         aList.add(b);
         aList.add(c);
-        int z=1;
-        do{
-            System.out.println("1: Select Address Book\n2: Display all the address book");
+
+        int z = 1;
+        do {
+            System.out.println("1: Select Address Book\n2: Display all the address book\n3: Display all the AddressBooks City");
             int inp = sc.nextInt();
+
             switch (inp) {
                 case 1:
                     System.out.println("Enter the address book you want to search");
                     String searchAddressBook = sc.next();
+
                     for (AddressBook a1 : aList) {
                         if (a1.Name.equalsIgnoreCase(searchAddressBook)) {
                             int choice;
@@ -58,13 +76,27 @@ public class Main {
                         }
                     }
                     break;
-                case 2 :
-                    for (AddressBook x1 : aList) {
-                        System.out.println(x1.Name + "  : " + x1);
-                    }
-                    break;
-            }
-        }while(z!=0);
 
+                case 2:
+//                    for (AddressBook x1 : aList)
+//                        System.out.println(x1.Name + "  : " + x1);
+                    aList.stream()
+                            .flatMap(addressBook -> addressBook.contactMap.values().stream())
+                            .forEach(System.out::println);
+                    break;
+
+                case 3:
+                    System.out.println("Enter the city you want to display");
+                    String city = sc.next();
+                    aList.stream()
+                            .flatMap(addressBook -> addressBook.contactMap.values().stream())
+                            .filter(person -> person.getCity().equalsIgnoreCase(city))
+                            .forEach(System.out::println);
+                    break;
+
+                default:
+                    z = 0;
+            }
+        } while (z != 0);
     }
 }

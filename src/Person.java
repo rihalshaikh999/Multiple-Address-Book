@@ -1,5 +1,13 @@
-public class Person
-{
+/*
+ * This class represents a Person and includes private variables for first name, last name, phone number,
+ * zip code, city, relation, and a Relationship enum. It provides a constructor, getter and setter methods,
+ * and overrides the toString() method for meaningful representation.
+ */
+public class Person {
+
+    /*
+     * Private variables to store personal information.
+     */
     private String fname;
     private String lname;
     private String phnNo;
@@ -7,7 +15,18 @@ public class Person
     private String city;
     private String relation;
     private Relationship relationship;
-    public Person(String fname, String lname, String phnNo, int zipCode,String city, String relation) {
+
+    /*
+     * Constructor to initialize a Person object with the provided parameters.
+     *
+     * @param fname First name of the person.
+     * @param lname Last name of the person.
+     * @param phnNo Phone number of the person.
+     * @param zipCode Zip code of the person.
+     * @param city City of the person.
+     * @param relation Relation of the person (family, friends, associates, colleagues).
+     */
+    public Person(String fname, String lname, String phnNo, int zipCode, String city, String relation) {
         this.fname = fname;
         this.lname = lname;
         this.phnNo = phnNo;
@@ -16,6 +35,9 @@ public class Person
         this.relationship = Relationship.fromString(relation);
     }
 
+    /*
+     * Override of the toString() method to provide a formatted string representation of the Person object.
+     */
     @Override
     public String toString() {
         return "Person{" +
@@ -23,10 +45,13 @@ public class Person
                 ", lname='" + lname + '\'' +
                 ", phnNo='" + phnNo + '\'' +
                 ", zipCode=" + zipCode +
-                ", city=" + city +
-                ", relation=" + relationship +
+                ", city='" + city + '\'' +
+                ", relation='" + relation + '\'' +
+                ", relationship=" + relationship +
                 '}';
     }
+
+    // Getter and setter methods for private variables.
 
     public String getFname() {
         return fname;
@@ -85,28 +110,51 @@ public class Person
     }
 }
 
+/*
+ * Enum class representing possible relationship types with associated string values.
+ */
 enum Relationship {
     FAMILY("family"),
     FRIENDS("friends"),
     ASSOCIATES("associates"),
     COLLEAGUES("colleagues");
 
+    /*
+     * Private variable to store the relation associated with each enum constant.
+     */
     private final String relation;
 
+    /*
+     * Constructor to associate a string value with each enum constant.
+     *
+     * @param relation The string value associated with the enum constant.
+     */
     Relationship(String relation) {
         this.relation = relation;
     }
 
+    /*
+     * Getter method to retrieve the string value associated with the enum constant.
+     *
+     * @return The string value associated with the enum constant.
+     */
     public String getRelation() {
         return relation;
     }
 
+    /*
+     * Static method to convert a string to the corresponding Relationship enum constant.
+     *
+     * @param text The string to be converted to a Relationship enum constant.
+     * @return The Relationship enum constant corresponding to the input string.
+     * @throws IllegalArgumentException If no constant with the specified text is found.
+     */
     public static Relationship fromString(String text) {
         for (Relationship relationship : Relationship.values()) {
             if (relationship.relation.equalsIgnoreCase(text)) {
                 return relationship;
             }
         }
-        throw new IllegalArgumentException("No constant with text " + text + " found");
+        throw new IllegalArgumentException("No constant with text '" + text + "' found");
     }
 }
