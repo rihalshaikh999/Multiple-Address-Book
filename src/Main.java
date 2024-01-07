@@ -30,7 +30,7 @@ public class Main {
 
         int z = 1;
         do {
-            System.out.println("1: Select Address Book\n2: Display all the address book\n3: Display all the AddressBooks City");
+            System.out.println("1: Select Address Book\n2: Display all the address book\n3: Display all the AddressBooks City\n4: Display all the AddressBooks State");
             int inp = sc.nextInt();
 
             switch (inp) {
@@ -93,7 +93,14 @@ public class Main {
                             .filter(person -> person.getCity().equalsIgnoreCase(city))
                             .forEach(System.out::println);
                     break;
-
+                case 4:
+                    System.out.println("Enter the state you want to display");
+                    String state = sc.next();
+                    aList.stream()
+                            .flatMap(addressBook -> addressBook.stateMap.values().stream())
+                            .filter(person -> person.getState().equalsIgnoreCase(state))
+                            .forEach(System.out::println);
+                    break;
                 default:
                     z = 0;
             }

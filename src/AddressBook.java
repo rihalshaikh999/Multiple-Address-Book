@@ -10,7 +10,9 @@ class AddressBook{
             @return:  Its Doesn't return anything
      */
     String Name;
-    HashMap<String, Person> contactMap = new HashMap<>();
+    HashMap<String, Person>contactMap=new HashMap<>();
+    HashMap<String, Person>cityMap=new HashMap<>();
+    HashMap<String, Person>stateMap=new HashMap<>();
 
     AddressBook(String name) {
         this.Name = name;

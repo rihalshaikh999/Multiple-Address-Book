@@ -13,6 +13,7 @@ public class Person {
     private String phnNo;
     private int zipCode;
     private String city;
+    private String state;
     private String relation;
     private Relationship relationship;
 
@@ -26,12 +27,13 @@ public class Person {
      * @param city City of the person.
      * @param relation Relation of the person (family, friends, associates, colleagues).
      */
-    public Person(String fname, String lname, String phnNo, int zipCode, String city, String relation) {
+    public Person(String fname, String lname, String phnNo, int zipCode, String city, String state, String relation) {
         this.fname = fname;
         this.lname = lname;
         this.phnNo = phnNo;
         this.zipCode = zipCode;
         this.city = city;
+        this.state= state;
         this.relationship = Relationship.fromString(relation);
     }
 
@@ -46,6 +48,7 @@ public class Person {
                 ", phnNo='" + phnNo + '\'' +
                 ", zipCode=" + zipCode +
                 ", city='" + city + '\'' +
+                ", state='" + state + '\'' +
                 ", relation='" + relation + '\'' +
                 ", relationship=" + relationship +
                 '}';
@@ -68,6 +71,7 @@ public class Person {
     public void setCity(String city) {
         this.city = city;
     }
+    public void setState(String state) { this.state = state; }
 
     public int getZipCode() {
         return zipCode;
@@ -75,6 +79,9 @@ public class Person {
 
     public String getCity() {
         return city;
+    }
+    public String getState() {
+        return state;
     }
 
     public String getRelation() {

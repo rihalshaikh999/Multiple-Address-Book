@@ -31,10 +31,14 @@ public class AddressBookServices {
             int zip = rs.nextInt();
             System.out.println("Enter City");
             String city = rs.next();
+            System.out.println("Enter State");
+            String state = rs.next();
             System.out.println("Enter Relation");
             String relation = rs.next();
-            Person p1 = new Person(fname, lname, phoneNumber, zip, city, relation);
+            Person p1 = new Person(fname, lname, phoneNumber, zip, city,state,relation);
             a.contactMap.put(fname, p1);
+            a.cityMap.put(city, p1);
+            a.stateMap.put(state, p1);
             System.out.println("Contact added successfully");
         } else {
             System.out.println("Duplicate entry, This Name Already Exists...!!!");
@@ -59,9 +63,12 @@ public class AddressBookServices {
                 int zip = rs.nextInt();
                 System.out.println("Enter your new city");
                 String city = rs.next();
+                System.out.println("Enter your new state");
+                String state = rs.next();
                 p.setPhnNo(phoneNumber);
                 p.setZipCode(zip);
                 p.setCity(city);
+                p.setCity(state);
                 System.out.println("Contact Updated");
                 contactFound = true;
                 break;
