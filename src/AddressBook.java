@@ -1,6 +1,7 @@
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.TreeMap;
 import java.util.stream.Collectors;
 
 /*
@@ -13,9 +14,9 @@ class AddressBook{
             @return:  Its Doesn't return anything
      */
     String Name;
-    HashMap<String, Person>contactMap=new HashMap<>();
-    HashMap<String, Person>cityMap=new HashMap<>();
-    HashMap<String, Person>stateMap=new HashMap<>();
+    Map<String, Person> contactMap = new TreeMap<>(String.CASE_INSENSITIVE_ORDER);
+    Map<String, Person> cityMap = new HashMap<>();
+    Map<String, Person> stateMap = new HashMap<>();
 
     AddressBook(String name) {
         this.Name = name;

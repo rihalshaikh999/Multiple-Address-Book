@@ -3,7 +3,10 @@
  * zip code, city, relation, and a Relationship enum. It provides a constructor, getter and setter methods,
  * and overrides the toString() method for meaningful representation.
  */
-public class Person {
+public class Person implements Comparable<Person>{
+    public int compareTo(Person otherPerson) {
+        return this.fname.compareToIgnoreCase(otherPerson.fname);
+    }
 
     /*
      * Private variables to store personal information.

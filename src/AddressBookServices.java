@@ -1,7 +1,4 @@
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.Map;
-import java.util.Scanner;
+import java.util.*;
 import java.util.stream.Collectors;
 
 /*
@@ -113,8 +110,10 @@ public class AddressBookServices {
      * @param a The AddressBook object whose contacts will be displayed.
      */
     void displayContacts(AddressBook a) {
-        for (Map.Entry<String, Person> entry : a.contactMap.entrySet()) {
-            System.out.println(entry.getKey() + ": " + entry.getValue());
+        List<Person> sortedContacts = new ArrayList<>(a.contactMap.values());
+        Collections.sort(sortedContacts);
+        for (Person person : sortedContacts) {
+            System.out.println(person);
         }
     }
 
