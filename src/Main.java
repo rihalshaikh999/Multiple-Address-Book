@@ -1,6 +1,7 @@
 import java.util.ArrayList;
 import java.util.Map;
 import java.util.Scanner;
+import java.util.stream.Collectors;
 
 /*
  * This class contains the main method, logic, and switch cases for AddressBook functionality.
@@ -16,7 +17,8 @@ public class Main {
 
         // Scanner for user input
         Scanner sc = new Scanner(System.in);
-
+        AddressBookServices c1 = new AddressBookServices();
+        AddressBook ab=new AddressBook(null);
         // ArrayList to store multiple AddressBook instances
         ArrayList<AddressBook> aList = new ArrayList<>();
 
@@ -30,7 +32,7 @@ public class Main {
 
         int z = 1;
         do {
-            System.out.println("1: Select Address Book\n2: Display all the address book\n3: Display all the AddressBooks City\n4: Display all the AddressBooks State");
+            System.out.println("1: Select Address Book\n2: Display all the address book\n3: Display all the AddressBooks City\n4: Display all the AddressBooks State\n5: City Count\n6: State Count");
             int inp = sc.nextInt();
 
             switch (inp) {
@@ -45,7 +47,7 @@ public class Main {
                                 System.out.println("Welcome to AddressBook");
                                 System.out.println(menu);
 
-                                AddressBookServices c1 = new AddressBookServices();
+//                                AddressBookServices c1 = new AddressBookServices();
                                 int input = sc.nextInt();
 
                                 switch (input) {
@@ -100,6 +102,33 @@ public class Main {
                             .flatMap(addressBook -> addressBook.stateMap.values().stream())
                             .filter(person -> person.getState().equalsIgnoreCase(state))
                             .forEach(System.out::println);
+                    break;
+                case 5:
+                    System.out.println("Enter city name to count: ");
+//                    c1.printContactCountByCity(aList);
+                    String cityCount=sc.next();int countCity=0;
+                    for (Map.Entry<String, Person> entry : a.cityMap.entrySet()) {
+                        Person p = entry.getValue();
+                        if (p.getCity().equalsIgnoreCase(cityCount))
+                            countCity++;
+                        else
+                            System.out.println("None");
+                    }
+                    System.out.println("COUNT:-  "+countCity);
+                    break;
+
+                case 6:
+                    System.out.println("Contact count by State:");
+//                    c1.printContactCountByState(aList);
+                    String stateCount=sc.next();int countstate=0;
+                    for (Map.Entry<String, Person> entry : a.stateMap.entrySet()) {
+                        Person p = entry.getValue();
+                        if (p.getState().equalsIgnoreCase(stateCount))
+                            countstate++;
+                        else
+                            System.out.println("None");
+                    }
+                    System.out.println("COUNT:-  "+countstate);
                     break;
                 default:
                     z = 0;

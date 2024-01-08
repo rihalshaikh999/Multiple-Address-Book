@@ -1,6 +1,8 @@
+import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.Map;
 import java.util.Scanner;
+import java.util.stream.Collectors;
 
 /*
  * This class contains methods that are used in the main and other classes related to AddressBook functionality.
@@ -11,7 +13,6 @@ public class AddressBookServices {
      * Scanner object for reading user input.
      */
     Scanner rs = new Scanner(System.in);
-
     /*
      * Method to add a new contact to the given AddressBook.
      *
@@ -68,17 +69,17 @@ public class AddressBookServices {
                 p.setPhnNo(phoneNumber);
                 p.setZipCode(zip);
                 p.setCity(city);
-                p.setCity(state);
+                p.setState(state);
                 System.out.println("Contact Updated");
                 contactFound = true;
                 break;
             }
         }
-
         if (!contactFound) {
             System.out.println("Contact not found with the given name: " + fname);
         }
     }
+
 
     /*
      * Method to delete a contact by first name in the given AddressBook.
@@ -115,5 +116,28 @@ public class AddressBookServices {
         for (Map.Entry<String, Person> entry : a.contactMap.entrySet()) {
             System.out.println(entry.getKey() + ": " + entry.getValue());
         }
+    }
+
+//    static void printContactCountByCity(AddressBook a) {
+//        a.printContactCountByCity(a);
+//    }
+//
+//    static void printContactCountByState(AddressBook a) {
+//        a.printContactCountByState(a);
+//    }
+    void printContactCountByCity(ArrayList<AddressBook> aList) {
+        System.out.println("Contact count by City:");
+        aList.stream()
+                .flatMap(addressBook -> addressBook.cityMap.values().stream())
+                .collect(Collectors.groupingBy(Person::getCity, Collectors.counting()))
+                .forEach((city, count) -> System.out.println(city + ": " + count));
+}
+
+    void printContactCountByState(ArrayList<AddressBook> aList) {
+        System.out.println("Contact count by State:");
+        aList.stream()
+                .flatMap(addressBook -> addressBook.stateMap.values().stream())
+                .collect(Collectors.groupingBy(Person::getState, Collectors.counting()))
+                .forEach((state, count) -> System.out.println(state + ": " + count));
     }
 }
