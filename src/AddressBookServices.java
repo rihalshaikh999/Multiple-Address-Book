@@ -139,4 +139,24 @@ public class AddressBookServices {
                 .collect(Collectors.groupingBy(Person::getState, Collectors.counting()))
                 .forEach((state, count) -> System.out.println(state + ": " + count));
     }
+    void displayContactsSortedByCity(AddressBook a) {
+        List<Person> sortedContacts = a.sortContactsByCity();
+        displaySortedContacts(sortedContacts);
+    }
+
+    void displayContactsSortedByState(AddressBook a) {
+        List<Person> sortedContacts = a.sortContactsByState();
+        displaySortedContacts(sortedContacts);
+    }
+
+    void displayContactsSortedByZip(AddressBook a) {
+        List<Person> sortedContacts = a.sortContactsByZip();
+        displaySortedContacts(sortedContacts);
+    }
+
+    private void displaySortedContacts(List<Person> sortedContacts) {
+        for (Person person : sortedContacts) {
+            System.out.println(person);
+        }
+    }
 }

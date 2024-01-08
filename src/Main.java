@@ -32,7 +32,7 @@ public class Main {
 
         int z = 1;
         do {
-            System.out.println("1: Select Address Book\n2: Display all the address book\n3: Display all the AddressBooks City\n4: Display all the AddressBooks State\n5: City Count\n6: State Count");
+            System.out.println("1: Select Address Book\n2: Display all the address book\n3: Display all the AddressBooks City\n4: Display all the AddressBooks State\n5: City Count\n6: State Count\n7: Sort by City\n8: Sort by State\n9: Sort by Zip");
             int inp = sc.nextInt();
 
             switch (inp) {
@@ -129,6 +129,15 @@ public class Main {
                             System.out.println("None");
                     }
                     System.out.println("COUNT:-  "+countstate);
+                    break;
+                case 7:
+                    c1.displayContactsSortedByCity(a);
+                    break;
+                case 8:
+                    c1.displayContactsSortedByState(a);
+                    break;
+                case 9:
+                    c1.displayContactsSortedByZip(a);
                     break;
                 default:
                     z = 0;
